@@ -1,4 +1,6 @@
 let gameBoardXY = [];
+let boardColor1 = "#229954";
+let boardColor2 = "#2ecc71";
 
 function createGameBoardGrid(numRows, numColumns, color1, color2) {
   let gameBoard = [];
@@ -21,5 +23,5 @@ function renderGameBoard(gameBoard) {
   gameBoardContainer.append(...gameBoard.flat());
 }
 
-gameBoardXY = createGameBoardGrid(15, 15, "#229954", "#2ecc71");
+gameBoardXY = createGameBoardGrid(15, 15, boardColor1, boardColor2);
 renderGameBoard(gameBoardXY);
