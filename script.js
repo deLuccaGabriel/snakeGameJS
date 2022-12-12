@@ -18,12 +18,7 @@ function createGameBoardGrid(numRows, numColumns, color1, color2) {
 
 function renderGameBoard(gameBoard) {
   const gameBoardContainer = document.getElementById("grid-container");
-  for(let row = 0; row < gameBoard.length; row++) {
-    for (let column = 0; column < gameBoard[row].length; column++) {
-      gameBoardContainer.append(gameBoard[row][column]);
-    }
-  }
-
+  gameBoardContainer.append(...gameBoard.flat());
 }
 
 gameBoardXY = createGameBoardGrid(15, 15, "#229954", "#2ecc71");
