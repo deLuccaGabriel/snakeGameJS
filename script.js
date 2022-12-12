@@ -20,6 +20,13 @@ function createGameBoardGrid(numRows, numColumns, color1, color2) {
 
 function renderGameBoard(gameBoard) {
   const gameBoardContainer = document.getElementById("grid-container");
+
+  gameBoardContainer.setAttribute(
+    "style",
+    `grid-template: repeat(${gameBoard.length}, auto) / 
+                    repeat(${gameBoard[0].length}, auto)`
+  );
+
   gameBoardContainer.append(...gameBoard.flat());
 }
 
