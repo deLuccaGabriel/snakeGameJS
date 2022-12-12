@@ -1,20 +1,30 @@
-function createGameGrid(parentElement, numRows, numColumns, color1, color2) {
-  const gridContainer = document.getElementById(parentElement);
-  let color = "";
+let gameBoardXY = [];
 
-  for (let x = 0; x < numRows; x++) {
-    for (let y = 0; y < numColumns; y++) {
-      const gridSquare = document.createElement("div");
-      gridSquare.className = "grid-squares";
-      gridSquare.setAttribute("draggable", false);
-      if ((y + x) % 2 == 0)
-        color = color1;
-      else
-        color = color2;
-      gridSquare.setAttribute("style", `background-color: ${color}`);
-      gridContainer.appendChild(gridSquare);
+function createGameBoardGrid(numRows, numColumns, color1, color2) {
+  let gameBoard = [];
+
+  for (let row = 0; row < numRows; row++) {
+    gameBoard[row] = [];
+    for (let column = 0; column < numColumns; column++) {
+      const squareElement = document.createElement("div");
+      const color = (column + row) % 2 == 0 ? color1 : color2;
+      squareElement.classList.add("grid-squares");
+      squareElement.style.backgroundColor = color;
+      gameBoard[row][column] = squareElement;
     }
   }
+  return gameBoard;
 }
 
-createGameGrid("grid-container", 15, 15, "#229954", "#2ecc71");
+function renderGameBoard(gameBoard) {
+  const gameBoardContainer = document.getElementById("grid-container");
+  for(let row = 0; row < gameBoard.length; row++) {
+    for (let column = 0; column < gameBoard[row].length; column++) {
+      gameBoardContainer.append(gameBoard[row][column]);
+    }
+  }
+
+}
+
+gameBoardXY = createGameBoardGrid(15, 15, "#229954", "#2ecc71");
+renderGameBoard(gameBoardXY);
