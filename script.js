@@ -1,6 +1,23 @@
-let gameBoardXY = [];
-let boardColor1 = "#229954";
-let boardColor2 = "#2ecc71";
+class Snake {
+  constructor(color, speed, size, positionY, positionX) {
+    this.color = color;
+    this.speed = speed;
+    this.size = size;
+    this.positionY = positionY;
+    this.positionX = positionX;
+    this.isAlive = true;
+  }
+  render(gameboard) {
+    gameboard[this.positionY][this.positionX].setAttribute(
+      "style",
+      `background-color: ${this.color}`
+    )
+  }
+  move() {
+    
+
+  }
+}
 
 function createGameBoardGrid(numRows, numColumns, color1, color2) {
   let gameBoard = [];
@@ -30,5 +47,27 @@ function renderGameBoard(gameBoard) {
   gameBoardContainer.append(...gameBoard.flat());
 }
 
-gameBoardXY = createGameBoardGrid(15, 15, boardColor1, boardColor2);
-renderGameBoard(gameBoardXY);
+function renderPlayer(gameboard, playerY, playerX, playerColor) {
+  gameboard[playerY][playerX].setAttribute(
+    "style",
+    `background-color: ${playerColor}`
+  )
+}
+
+const game_init = () => {
+  const snake = new Snake("#000", 1, 1, 7, 7);
+  let gameBoardGridYX = [];
+  let tileColorDark = "#229954";
+  let tileColorLight = "#2ecc71";
+
+  gameBoardGridYX = createGameBoardGrid(15, 15, tileColorDark, tileColorLight);
+  renderGameBoard(gameBoardGridYX);
+  snake.render(gameBoardGridYX);
+  
+  // do {
+
+  // } while(snake.isAlive);
+
+}
+
+game_init();
